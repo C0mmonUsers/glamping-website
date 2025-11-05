@@ -8,6 +8,7 @@ export default function Header() {
         <div className="text-2xl font-bold text-green-600">Glamping</div>
         <nav>
           <ul className="flex space-x-6">
+            {/* Would be good to use a map function here as well. */}
             <li>
               <Link
                 to="hero"
