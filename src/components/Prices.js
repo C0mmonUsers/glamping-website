@@ -13,51 +13,32 @@ const Prices = () => {
     { name: 'All Kinds of Pets', lowSeason: 'FREE', highSeason: 'FREE', isFree: true },
     { name: 'Kids and Infants', lowSeason: '50', highSeason: '60' },
   ];
-  
-  const tentImageUrl = aboutImage;
 
   return (
     <section className="container mx-auto mt-12 p-4 md:p-8 lg:p-12 flex flex-col lg:flex-row gap-8 lg:gap-12 bg-white max-w-7xl">
-      
       <div className="lg:w-1/2 flex justify-center">
         <img
-          src={tentImageUrl} 
+          src={aboutImage} 
           alt="Glamping Tent"
           className="rounded-lg shadow-xl object-cover w-full h-full max-h-[550px] lg:max-h-full"
         />
       </div>
 
       <div className="lg:w-1/2 p-4 md:p-0 relative">
-        
         <p className="absolute -top-16 left-0 text-gray-100 font-extrabold text-9xl tracking-tighter opacity-70 select-none hidden md:block">
           Pricing
         </p>
         
         <div className="mb-8 relative z-10">
-          <img 
-            src={TreeIconImage} 
-            alt="Tree Icon" 
-            className="w-8 h-8 mb-2" 
-          /> 
-
-          <h2 className="text-4xl font-bold text-gray-800 mb-4">
-            Our Price List
-          </h2>
-          <p className="text-gray-600 text-lg">
-            Explore the basic prices for our accommodation.
-          </p>
+          <img src={TreeIconImage} alt="Tree Icon" className="w-8 h-8 mb-2" /> 
+          <h2 className="text-4xl font-bold text-gray-800 mb-4">Our Price List</h2>
+          <p className="text-gray-600 text-lg">Explore the basic prices for our accommodation.</p>
         </div>
 
-        {/* Рядки Прайс-листа */}
         <div className="space-y-4 relative z-10">
           {priceList.map((item, index) => (
-            <div
-              key={index}
-              className="flex justify-between items-center pb-3 border-b border-gray-100"
-            >
-              <p
-                className={`font-semibold text-gray-800 ${item.isFree ? 'text-lg' : ''} pr-4`}
-              >
+            <div key={index} className="flex justify-between items-center pb-3 border-b border-gray-100">
+              <p className={`font-semibold text-gray-800 ${item.isFree ? 'text-lg' : ''} pr-4`}>
                 {item.name}
               </p>
               <div className="flex text-sm md:text-base whitespace-nowrap">

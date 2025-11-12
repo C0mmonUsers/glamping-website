@@ -11,12 +11,12 @@ import toilet from '../assets/images/toilet.png';
 import air from '../assets/images/air.png'; 
 import car from '../assets/images/car.png'; 
 
-
 const PRIMARY_COLOR = 'text-amber-700';
 const ACCENT_COLOR = 'text-gray-500';
 
 const ACCOMMODATIONS_DATA = [
     {
+        id: 1,
         image: domeImage, 
         title: "Geodesic Dome", 
         details: "1-6 PERSONS | 25M2", 
@@ -27,8 +27,8 @@ const ACCOMMODATIONS_DATA = [
             { icon: fire, label: "Bonfire" },
         ],
     },
-
     {
+        id: 2,
         image: cabinImage, 
         title: "Small Wood Cabin", 
         details: "1-6 PERSONS | 25M2", 
@@ -121,10 +121,10 @@ const Habitations = () => {
             <div className="relative z-10">
                 <HabitationsHeader /> 
 
-                <div className="max-w-6xl mx-auto pb-12 px-4 md:px-6 flex flex-wrap  items-stretch">
-                    {ACCOMMODATIONS_DATA.map((acc, index) => (
+                <div className="max-w-6xl mx-auto pb-12 px-4 md:px-6 flex flex-wrap items-stretch">
+                    {ACCOMMODATIONS_DATA.map(acc => (
                         <AccommodationCard 
-                            key={index}
+                            key={acc.id}
                             {...acc}
                         />
                     ))}

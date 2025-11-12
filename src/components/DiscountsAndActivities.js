@@ -1,82 +1,41 @@
 import React from 'react';
 import bike from '../assets/images/bikeicon.png';
-import boat from '../assets/images/boaticon.png'; 
+import boat from '../assets/images/boaticon.png';
 import rod from '../assets/images/fishingrod.png';
 import grill from '../assets/images/Grill.png';
-import honey from '../assets/images/backgroundhoney.png'; 
+import honey from '../assets/images/backgroundhoney.png';
 
+const activities = [
+  { icon: bike, title: "Mountain Biking", description: "Explore breathtaking trails with our guided mountain biking tours." },
+  { icon: boat, title: "Boating", description: "Enjoy peaceful rides across the lake with our safe and modern boats." },
+  { icon: rod, title: "Fishing", description: "Relax by the water and catch local fish species in the calm surroundings." },
+  { icon: grill, title: "Outdoor BBQ", description: "Grill your favorite meals while enjoying nature and fresh air." }
+];
 
 const ActivityItem = ({ icon, title, description }) => (
-    <div className="flex gap-4 md:gap-6 lg:w-1/2 p-2">
-        <div className="flex-shrink-0 w-16 h-16 text-amber-800">
-            <img src={icon} alt={`${title} icon`} className="w-full h-full object-contain" />
-        </div>
-        
-        <div>
-            <h3 className="text-lg font-bold text-gray-800 mb-1">{title}</h3>
-            <p className="text-base text-gray-600 leading-relaxed">{description}</p>
-        </div>
+  <div className="flex gap-4 md:gap-6 lg:w-1/2 p-2">
+    <div className="flex-shrink-0 w-16 h-16 text-amber-800">
+      <img src={icon} alt={title} className="w-full h-full object-contain" />
     </div>
+    <div>
+      <h3 className="text-lg font-bold text-olive">{title}</h3>
+      <p className="text-gray-600">{description}</p>
+    </div>
+  </div>
 );
 
-
 const DiscountsAndActivities = () => {
-
-    return (
-        <div className="font-sans">
-            
-            <div className="max-w-6xl mx-auto py-12 px-4 md:px-6">
-                <div className="bg-gray-50/70 p-12 text-center rounded-lg opacity-95" 
-                     style={{ 
-                        backgroundImage: `url(${honey})`, 
-                         backgroundSize: '1200px ',
-                         backgroundRepeat: 'no-repeat',
-                         backgroundPosition: 'center',
-                         
-                    }}>
-                    
-                    <h2 className="text-3xl md:text-4xl font-extrabold text-gray-800 leading-snug">
-                        We Give a <span className="text-amber-700">15% Discount</span> for Honeymoon!
-                    </h2>
-                    <p className="text-lg text-gray-600 mt-4 mb-8">
-                        Book your getaway for 3+ days and contact our managers to get the discount.
-                    </p>
-                    <button className="text-sm font-bold uppercase text-amber-700 tracking-wider py-3 px-6 border border-amber-700 hover:bg-amber-50 transition duration-300">
-                        Book Now
-                    </button>
-                </div>
-            </div>
-            
-            <div className="max-w-6xl mx-auto py-12 px-4 md:px-6">
-                <div className="flex flex-wrap"> 
-                    
-                    <ActivityItem 
-                        icon={bike} 
-                        title="Mountain Biking"
-                        description="Embark on exhilarating mountain biking trails that wind through the rugged terrain surrounding our glamping site, offering breathtaking views of the Washington landscape."
-                    />
-                    
-                    <ActivityItem 
-                        icon={boat} 
-                        title="Rafting"
-                        description="Experience the thrill of white-water rafting adventures down the roaring rivers nearby, where guides lead you through exhilarating rapids for an unforgettable outdoor experience."
-                    />
-
-                    <ActivityItem 
-                        icon={rod} 
-                        title="Fly Fishing"
-                        description="Cast your line into pristine rivers teeming with trout during guided fly fishing excursions, immersing yourself in the serene beauty of nature while honing your angling skills."
-                    />
-
-                    <ActivityItem 
-                        icon={grill} 
-                        title="Barbeque Night"
-                        description="Gather under the starry sky for a cozy barbecue night, where the tantalizing aroma of sizzling grilled delights fills the air as guests come together around the crackling firepit."
-                    />
-                </div>
-            </div>
+  return (
+    <section className="relative bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url(${honey})` }}>
+      <div className="max-w-6xl mx-auto py-12 px-4 md:px-6">
+        <div className="flex flex-wrap">
+          {activities.map((item, index) => (
+            <ActivityItem key={index} icon={item.icon} title={item.title} description={item.description} />
+          ))}
         </div>
-    );
+      </div>
+    </section>
+  );
 };
 
 export default DiscountsAndActivities;

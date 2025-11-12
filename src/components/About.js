@@ -1,5 +1,5 @@
 import React from 'react';
-import aboutImage from '../assets/images/about.jpg'; // Постав своє зображення
+import aboutImage from '../assets/images/about.jpg'; 
 
 export default function About() {
   return (

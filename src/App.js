@@ -13,11 +13,11 @@ import Prices from './components/Prices';
 import HeroBanner from './components/Herobanner';
 import Banner from './components/Banner';
 import ArticlesSection from './components/ArticlesSection';
+import Layout from './components/Layout';
 
 function App() {
   return (
-    <>
-      <Header />
+      <Layout>
       <Hero />
       <About />
       <Services />
@@ -30,9 +30,9 @@ function App() {
       <Prices />
       <Banner />
       <ArticlesSection />
-      <Gallery />
-      <Footer />
-    </>     
+      <Gallery /> 
+      <Footer /> 
+      </Layout>    
   );
 }
 

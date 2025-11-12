@@ -15,7 +15,7 @@ export default function Header() {
                 duration={500}
                 className="cursor-pointer hover:text-green-600"
               >
-                Головна
+                Main
               </Link>
             </li>
             <li>
@@ -25,7 +25,7 @@ export default function Header() {
                 duration={500}
                 className="cursor-pointer hover:text-green-600"
               >
-                Про нас
+                About Us
               </Link>
             </li>
             <li>
@@ -35,7 +35,7 @@ export default function Header() {
                 duration={500}
                 className="cursor-pointer hover:text-green-600"
               >
-                Послуги
+                Services
               </Link>
             </li>
             <li>
@@ -45,7 +45,7 @@ export default function Header() {
                 duration={500}
                 className="cursor-pointer hover:text-green-600"
               >
-                Галерея
+                Gallery
               </Link>
             </li>
             <li>
@@ -55,13 +55,13 @@ export default function Header() {
                 duration={500}
                 className="cursor-pointer hover:text-green-600"
               >
-                Контакти
+                Contact
               </Link>
             </li>
           </ul>
         </nav>
         <button className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">
-          Бронювати
+          Book Now
         </button>
       </div>
     </header>

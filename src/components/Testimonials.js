@@ -1,132 +1,71 @@
-import React, { useState, useRef } from 'react';
-import reviewBackground from '../assets/images/backgroundSpikes.png'; 
-import buttonStartsLeft from '../assets/images/buttonstartsleft.png';
-import buttonStartsRight from '../assets/images/buttonstartsright.png';
+import React from 'react';
+import service1 from '../assets/images/service1.jpg';
+import service2 from '../assets/images/service2.jpg';
+import service3 from '../assets/images/service3.jpg';
+import TENT from '../assets/images/TENT.jpg';
+import vodopad from '../assets/images/vodopad.jpg';
 
+export default function Services() {
+  const services = [
+    { img: service1, title: "Luxury Design", desc: "Each of our rooms is beautifully designed, combining eco materials and fine fabric." },
+    { img: service3, title: "Adventure Packages", desc: "There's so much to do near our spot, from rafting to horse racing!" },
+    { img: service2, title: "Breakfast Included", desc: "We serve breakfast each morning with fresh local products." },
+  ];
 
-const ACCENT_COLOR_CLASS = 'text-[#8c8c4a]'; 
-const BUTTON_COLOR_CLASS = 'bg-amber-800'; 
-
-const SCROLL_CONTAINER_ID = 'reviews-scroll-container';
-
-export default function ReviewSectionNewSimple() {
-    
-    const [activeIndex, setActiveIndex] = useState(0); 
-    const scrollRef = useRef(null);
-
-    const testimonials = [
-        { text: "Hidden Heaven Glamping exceeded all our expectations. The tree house accommodation was like a fairytale!", name: "ERIC WARSTLER, CALIFORNIA", rating: 5 },
-        { text: "We opted for a tent overlooking the tranquil lake, and it was the perfect setting for a peaceful retreat.", name: "JESSICA WILSON, TAMPA", rating: 5 },
-        { text: "The geodesic dome we stayed in was a unique experience, offering unparalleled views of the star-studded sky at night.", name: "AMANDA LOWSON, NEW YORK", rating: 5 },
-        { text: "Неймовірне місце! Чисто, красиво, дуже комфортно. Обов'язково повернемося наступного року!", name: "АННА П.", rating: 5 },
-        { text: "Absolutely stunning location and incredible service. Highly recommend the dome experience!", name: "MARK R., FLORIDA", rating: 5 },
-        { text: "Perfect getaway spot. The cabin was cozy, and the view was breathtaking. Five stars!", name: "SARAH L., TEXAS", rating: 5 },
-    ];
-
-    const totalSlides = testimonials.length;
-
-    const scrollToSlide = (index) => {
-        if (scrollRef.current) {
-            const slideWidth = 384 + 32; 
-            const scrollPosition = index * slideWidth; 
-            
-            scrollRef.current.scrollTo({
-                left: scrollPosition,
-                behavior: 'smooth'
-            });
-            setActiveIndex(index);
-        }
-    };
-
-    const goToPrev = () => {
-        const newIndex = activeIndex > 0 ? activeIndex - 1 : 0;
-        scrollToSlide(newIndex);
-    };
-
-    const goToNext = () => {
-        const newIndex = activeIndex < totalSlides - 1 ? activeIndex + 1 : totalSlides - 1;
-        scrollToSlide(newIndex);
-    };
-
-    return (
-        <section id="review-section" className="font-sans relative">
-            
-            <div 
-                className="py-16 relative z-10"
-                style={{ 
-                    backgroundImage: `url(${reviewBackground})`,
-                    backgroundSize: 'cover',
-                    backgroundRepeat: 'repeat',
-                }}
+  return (
+    <section id="services" className="py-20 bg-cream font-kanit">
+      <div className="max-w-6xl mx-auto px-4">
+        <div className="grid md:grid-cols-3 gap-8">
+          {services.map((s, i) => (
+            <div
+              key={i}
+              className="bg-white shadow-xl rounded-2xl overflow-hidden transform hover:scale-105 transition duration-500"
             >
-                <div className="absolute inset-0 bg-white/70 z-0"></div> 
-
-                <div className="max-w-7xl mx-auto px-4 relative z-10">
-                    
-                    <div className="flex items-center">
-                        <button 
-                            onClick={goToPrev}
-                            disabled={activeIndex === 0} 
-                            className={`hidden lg:block w-12 h-12 rounded-full bg-white shadow-lg p-2 transition duration-300 transform -translate-x-1/2 focus:outline-none 
-                                ${activeIndex === 0 ? 'opacity-50 cursor-not-allowed' : 'hover:scale-110 cursor-pointer'}`}
-                            aria-label="Previous slide"
-                        >
-                            <img src={buttonStartsLeft} alt="Previous" className="w-full h-full object-contain" />
-                        </button>
-                        <div 
-                            ref={scrollRef}
-                            id={SCROLL_CONTAINER_ID}
-                            className="flex overflow-x-scroll snap-x snap-mandatory space-x-8 pb-4 md:pb-6 w-full px-4 md:px-0" 
-                            style={{ 
-                                scrollbarWidth: 'none', 
-                                msOverflowStyle: 'none', 
-                            }}
-                        >
-                            
-                            {testimonials.map((t, i) => (
-                                <div 
-                                    key={i} 
-                                    className="flex-shrink-0 w-full md:w-96 p-6 md:p-8 snap-center bg-white rounded-lg shadow-xl" 
-                                >
-                                    <div className={`${ACCENT_COLOR_CLASS} text-xl mb-6 text-left`}>
-                                        {'★'.repeat(t.rating)}
-                                    </div>
-                                    
-                                    <p className="text-gray-700 mb-8 italic leading-relaxed min-h-[6rem] text-left">
-                                        "{t.text}"
-                                    </p>
-                                    
-                                    <h3 className="text-base font-bold text-gray-900 uppercase tracking-wider text-left">
-                                        {t.name}
-                                    </h3>
-
-                                    <div className="flex justify-start space-x-2 mt-6">
-                                        {testimonials.map((_, index) => (
-                                            <button
-                                                key={index}
-                                                onClick={() => scrollToSlide(index)}
-                                                className={`w-3 h-3 rounded-full transition-colors duration-300 focus:outline-none ${
-                                                    index === i ? `${BUTTON_COLOR_CLASS} w-3 h-3` : 'bg-gray-300'
-                                                }`}
-                                                aria-label={`Go to slide ${index + 1}`}
-                                            ></button>
-                                        ))}
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                        <button 
-                            onClick={goToNext}
-                            disabled={activeIndex === totalSlides - 1} 
-                            className={`hidden lg:block w-12 h-12 rounded-full bg-white shadow-lg p-2 transition duration-300 transform translate-x-1/2 focus:outline-none 
-                                ${activeIndex === totalSlides - 1 ? 'opacity-50 cursor-not-allowed' : 'hover:scale-110 cursor-pointer'}`}
-                            aria-label="Next slide"
-                        >
-                            <img src={buttonStartsRight} alt="Next" className="w-full h-full object-contain" />
-                        </button>
-                    </div>
-                </div>
+              <img src={s.img} alt={s.title} className="w-full h-52 object-cover" />
+              <div className="p-6">
+                <h3 className="text-2xl font-bold text-olive mb-3">{s.title}</h3>
+                <p className="text-gray-700 leading-relaxed">{s.desc}</p>
+              </div>
             </div>
-        </section>
-    );
+          ))}
+        </div>
+      </div>
+
+      <div className="mt-24 flex flex-col md:flex-row items-stretch gap-8 px-6 md:px-16">
+        <div className="md:w-1/2 w-full h-96 overflow-hidden rounded-2xl shadow-lg">
+          <img
+            src={TENT}
+            alt="Camping setup"
+            className="w-full h-full object-cover"
+          />
+        </div>
+
+        <div className="md:w-2/3 w-full bg-green-50 flex items-center rounded-2xl shadow-lg">
+          <div className="w-full px-8 py-10 text-left">
+            <h2 className="text-4xl font-bold text-olive mb-5">
+              Experience Nature in Style — Reserve Your Spot!
+            </h2>
+            <p className="text-gray-800 mb-8 leading-relaxed">
+              Whether you're seeking a romantic getaway, a family adventure, or a solo escape, Hidden Heaven promises an unforgettable stay for every visitor. From cozy tents to charming cabins, our accommodations are thoughtfully designed to provide a tranquil haven amidst the breathtaking wilderness.
+            </p>
+            <button className="bg-olive text-white px-8 py-3 text-lg rounded-full hover:bg-[#55601d] transition duration-300">
+              BOOK NOW
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div className="relative mt-24 mx-6 md:mx-16">
+        <img
+          src={vodopad}
+          alt="Водопад"
+          className="w-full h-auto rounded-2xl shadow-xl"
+        />
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white bg-black/20 rounded-2xl">
+          <span className="text-6xl md:text-8xl font-bebas tracking-wider mb-2">Explore.</span>
+          <span className="text-6xl md:text-8xl font-bebas tracking-wider">Camp. Thrive.</span>
+        </div>
+      </div>
+    </section>
+  );
 }
