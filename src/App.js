@@ -31,7 +31,6 @@ function App() {
       <Banner />
       <ArticlesSection />
       <Gallery /> 
-      <Footer /> 
       </Layout>    
   );
 }
